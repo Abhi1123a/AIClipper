@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# AI Video Clipper - dependencies (all free / open-source or free-tier)
+# Python 3.10 - 3.12 recommended
+# ---------------------------------------------------------------------------
+
+# --- Ingestion -------------------------------------------------------------
+yt-dlp>=2026.1.1
+curl-cffi>=0.7.0             # browser TLS impersonation - big help with 403s
+
+# NOTE: yt-dlp also needs an external JavaScript runtime for YouTube in 2026.
+#   Deno (recommended):  curl -fsSL https://deno.land/install.sh | sh
+#   or Node:             sudo apt install nodejs / brew install node
+
+# --- Transcription (local, no cloud cost) ----------------------------------
+faster-whisper>=1.0.3
+ctranslate2>=4.3.1
+
+# --- LLM highlight detection (free tiers; both optional) -------------------
+google-genai>=0.3.0          # Google Gemini free tier
+groq>=0.11.0                 # Groq free tier (fallback provider)
+openai>=1.40.0               # generic OpenAI-compatible client: NVIDIA NIM,
+                             # OpenRouter, Cerebras, Together, Ollama, LM Studio
+
+# --- Video / vision --------------------------------------------------------
+opencv-python-headless>=4.9.0   # swap for opencv-python if you want cv2.imshow
+numpy>=1.24,<3
+
+# --- Utilities -------------------------------------------------------------
+python-dotenv>=1.0.1
+tqdm>=4.66.0
+
+# --- Publishing (all optional) --------------------------------------------
+playwright>=1.45.0                 # semi-automated browser posting
+google-api-python-client>=2.140.0  # official YouTube Data API v3 upload
+google-auth-oauthlib>=1.2.1
+google-auth-httplib2>=0.2.0
+
+# ---------------------------------------------------------------------------
+# NOT installable via pip - install separately (see README):
+#   * FFmpeg + ffprobe  (must be on PATH)
+#   * playwright browsers:  python -m playwright install chromium
+# ---------------------------------------------------------------------------
